@@ -1,16 +1,24 @@
+//Bottom Navigation
+//https://tutorialwing.com/android-bottom-navigation-view-tutorial-with-example/
+//Icons
+//https://icons8.com/icons/pack/cinema
+
 package com.example.mymovieapp.Fragments;
 
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.example.mymovieapp.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -61,12 +69,13 @@ public class NavigationFragment extends Fragment
                              Bundle savedInstanceState)
     {
         // Inflate the layout for this fragment
+
         View retView =  inflater.inflate(R.layout.fragment_navigation, container, false);
         fragmentManager = getActivity().getSupportFragmentManager();
-        fragmentManager.beginTransaction().add(R.id.fg_placeholder,profileFragment,"profile").hide(profileFragment).commit();
-        fragmentManager.beginTransaction().add(R.id.fg_placeholder,favouriteFragment,"favourite").hide(favouriteFragment).commit();
-        fragmentManager.beginTransaction().add(R.id.fg_placeholder,cinemaFragment,"cinema").hide(cinemaFragment).commit();
-        fragmentManager.beginTransaction().add(R.id.fg_placeholder,homeFragment,"home").commit();
+        fragmentManager.beginTransaction().add(R.id.fg_navPlaceholder,profileFragment,"profile").hide(profileFragment).commit();
+        fragmentManager.beginTransaction().add(R.id.fg_navPlaceholder,favouriteFragment,"favourite").hide(favouriteFragment).commit();
+        fragmentManager.beginTransaction().add(R.id.fg_navPlaceholder,cinemaFragment,"cinema").hide(cinemaFragment).commit();
+        fragmentManager.beginTransaction().add(R.id.fg_navPlaceholder,homeFragment,"home").commit();
         initView(retView);
         return retView;
     }
@@ -82,6 +91,14 @@ public class NavigationFragment extends Fragment
                 {
                     case R.id.navigation_home:
                         ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Home");
+
+                        //add icon to the action bar
+                        /*ImageView imageView = new ImageView(getActivity().getApplicationContext());
+                        imageView.setImageResource(R.drawable.tmdb);
+                        ((AppCompatActivity)getActivity()).getSupportActionBar().setCustomView(imageView,new ActionBar.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+                        //enable the view
+                        ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayShowCustomEnabled(true);*/
+
                         fragmentManager.beginTransaction().hide(active).show(homeFragment).commit();
                         active = homeFragment;
                         //Toast.makeText(getActivity(),"Home",Toast.LENGTH_SHORT).show();

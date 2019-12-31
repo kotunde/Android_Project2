@@ -1,4 +1,4 @@
-package com.example.mymovieapp.Adapters;
+package com.example.mymovieapp.Helpers;
 
 
 import android.content.ContentValues;

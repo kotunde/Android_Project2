@@ -1,5 +1,5 @@
 //USEFUL LINKS
-//Switch between fragments withoyt recreating the fragments
+//Switch between fragments without recreating the fragments
 //https://medium.com/@oluwabukunmi.aluko/bottom-navigation-view-with-fragments-a074bfd08711
 
 package com.example.mymovieapp;
